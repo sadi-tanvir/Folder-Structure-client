@@ -36,7 +36,7 @@ const requestOptions = {
 };
 
 // Make the API call
-fetch(`${process.env.REACT_APP_API_URL}/deleteFolder`, requestOptions)
+fetch(`https://folder-structure-server-nb0y.onrender.com/api/folder/deleteFolder`, requestOptions)
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');

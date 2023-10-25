@@ -14,7 +14,7 @@ const InputAlert = ({ openPopup, setOpenPopup, parentId, setIsChange, isChange }
     const [folderName, setFolderName] = useState("")
     const handleInput = async () => {
         try {
-            const res = await axios.post(`${process.env.REACT_APP_API_URL}/create`, {
+            const res = await axios.post(`https://folder-structure-server-nb0y.onrender.com/api/folder/create`, {
                 parentId: parentId,
                 name: folderName
             })

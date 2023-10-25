@@ -19,7 +19,7 @@ const App: React.FC = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const data = await axios.get(`${process.env.REACT_APP_API_URL}/folders`);
+            const data = await axios.get(`https://folder-structure-server-nb0y.onrender.com/api/folder/folders`);
             setFolders([data.data.rootFolders])
         };
         getData()
