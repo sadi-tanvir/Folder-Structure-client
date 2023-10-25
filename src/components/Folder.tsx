@@ -9,19 +9,21 @@ type FolderType = {
     parentId?: string;
     name: string;
     children: FolderType[];
+    setIsChange: React.Dispatch<React.SetStateAction<boolean>>;
+    isChange: boolean;
 }
 
 const App: React.FC = () => {
     const [folders, setFolders] = useState<FolderType[] | []>([])
+    const [isChange, setIsChange] = useState(false)
 
     useEffect(() => {
         const getData = async () => {
             const data = await axios.get(`http://localhost:500/api/folder/folders`);
             setFolders([data.data.rootFolders])
         };
-
         getData()
-    }, [])
+    }, [isChange])
 
     return (
         <div className="folder-structure">
@@ -32,6 +34,8 @@ const App: React.FC = () => {
                     parentId={folder.parentId || ""}
                     name={folder.name}
                     children={folder.children}
+                    setIsChange={setIsChange}
+                    isChange={isChange}
                 />
             ))}
         </div>
