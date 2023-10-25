@@ -16,6 +16,40 @@ interface FolderPropsType {
 const Folder: React.FC<FolderPropsType> = ({ _id, parentId, name, children, setIsChange, isChange }) => {
   const [openPopup, setOpenPopup] = useState(false)
 
+  const handleDeleteFolder = async () => {
+
+
+
+// Data to send in the request body
+const data = {
+  parentId,
+  currentId: _id,
+};
+
+// Define the Fetch options
+const requestOptions = {
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(data),
+};
+
+// Make the API call
+fetch(`${process.env.REACT_APP_API_URL}/deleteFolder`, requestOptions)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    setIsChange(!isChange);
+  })
+  .catch(error => {
+    // Handle any errors here
+    console.error('API call failed', error);
+  });
+  };
+
   return (
     <>
       <InputAlert
@@ -33,7 +67,7 @@ const Folder: React.FC<FolderPropsType> = ({ _id, parentId, name, children, setI
           {name}
           <div className='addDeleteIcon'>
             <AddFolderIcon onClick={() => setOpenPopup(true)} />
-            {name === 'root' || <DeleteFolderIcon />}
+            {name === 'root' || <DeleteFolderIcon onClick={handleDeleteFolder} />}
           </div>
         </div>
         {children && children.length > 0 && (

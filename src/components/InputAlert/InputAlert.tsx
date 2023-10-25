@@ -14,7 +14,7 @@ const InputAlert = ({ openPopup, setOpenPopup, parentId, setIsChange, isChange }
     const [folderName, setFolderName] = useState("")
     const handleInput = async () => {
         try {
-            const res = await axios.post(`http://localhost:500/api/folder/create`, {
+            const res = await axios.post(`${process.env.REACT_APP_API_URL}/create`, {
                 parentId: parentId,
                 name: folderName
             })
@@ -22,6 +22,7 @@ const InputAlert = ({ openPopup, setOpenPopup, parentId, setIsChange, isChange }
                 console.log(res, 'created');
                 setOpenPopup(false)
                 setIsChange(!isChange);
+                setFolderName("")
             }
 
         } catch (error) {
@@ -34,7 +35,7 @@ const InputAlert = ({ openPopup, setOpenPopup, parentId, setIsChange, isChange }
             <div className={`${classes.popup} ${openPopup ? classes.open_popup : ''}`}>
                 <h2>Type Folder Name</h2>
                 <input onChange={(e) => setFolderName(e.target.value)} type="text" className={classes.inputFolder} />
-                <button onClick={handleInput} className={classes.popup_btn} type="button">close</button>
+                <button onClick={handleInput} className={classes.popup_btn} type="button">Create Folder</button>
             </div>
         </div>
     )
