@@ -1,8 +1,6 @@
+import "./App.css"
+import Folder from "./components/Folder"
 
-const App = () => {
-  return (
-    <div>react app</div>
-  )
-}
+const App = () => <Folder />
 
 export default App

@@ -1,0 +1,36 @@
+.folder-structure {
+  padding: 10px;
+}
+
+.folder {
+  margin: 5px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+}
+
+.folder-header {
+  padding: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.folder-header i {
+  margin-right: 5px;
+}
+
+.folder-children {
+  margin-left: 20px;
+}
+
+.folderIcon {
+  margin-right: 10px;
+}
+
+.addDeleteIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  gap: 10px;
+}
