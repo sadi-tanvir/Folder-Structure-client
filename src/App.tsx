@@ -1,6 +1,6 @@
 import "./App.css"
-import Folder from "./components/Folder"
+import FolderLayout from "./components/FolderLayout"
 
-const App = () => <Folder />
+const App = () => <FolderLayout />
 
-export default App
+export default App;
